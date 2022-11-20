@@ -3,7 +3,7 @@ An application to generate fake logs of specific use cases for log analysis usin
 
 This application is to simulate specific use cases of real life traffic which can be fed into an ML model to detect any anomalies in server, configuration, or user traffic and suggest appropriate counter measures.
 
-This application will be focusing on generating logs for specific use cases such as:
+This application will be focusing on instantaneously generating logs which might occur over a period of a few days in real life.
 
-- Authentication error for same user for 10 times in 2 days
-- Increasing trend in CPU usage
+- Authentication error for same user for 10 times in 2 days.
+- Increasing trend in CPU usage.
