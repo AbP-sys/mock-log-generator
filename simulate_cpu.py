@@ -38,14 +38,14 @@ def generate_const_data(lastEntry,current_time):
     return [cpu,mem]
 
 def generate_grad_data(lastEntry,current_time):
-    f = open("cpulogs.txt", "a")
+    f = open("cpu_grad_increase.txt", "a")
     dip_chance = random.randint(0, 100)
     is_dip = False
 
-    if dip_chance < 20:  # 20% chance for generating a spike
+    if dip_chance < 20:  # 20% chance for generating a dip
         cpu = random.randint(lastEntry[0]-500,lastEntry[0])
         mem = random.randint(lastEntry[1]-500, lastEntry[1]) 
-        is_peak = True
+        is_dip = True
     else:
         cpu = random.randint(lastEntry[0],lastEntry[0]+200) 
         mem = random.randint(lastEntry[1], lastEntry[1]+200) 
