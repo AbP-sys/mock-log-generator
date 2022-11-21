@@ -13,6 +13,7 @@ For example:
  
 ## Preview
 
+### Repeated authentication failure 
 log.txt:
 Relevant logs for user authentication failure have been highlighted with '🔴'
 
@@ -44,3 +45,22 @@ Relevant logs for user authentication failure have been highlighted with '🔴'
 ```
 
 Logs are generated in [Apache NCSA](https://learn.microsoft.com/en-us/windows/win32/http/ncsa-logging) log format.
+
+### CPU usage 
+
+```
+21 Nov 2022 17:12:58 CPU: 30.69 Memory: 25.86
+21 Nov 2022 17:17:58 CPU: 30.7 Memory: 23.11
+21 Nov 2022 17:22:58 CPU: 31.24 Memory: 27.05
+21 Nov 2022 17:27:58 CPU: 34.08 Memory: 27.35
+21 Nov 2022 17:32:58 CPU: 75.99 Memory: 73.59
+21 Nov 2022 17:37:58 CPU: 82.54 Memory: 71.36
+21 Nov 2022 17:42:58 CPU: 34.86 Memory: 25.13
+21 Nov 2022 17:47:58 CPU: 35.01 Memory: 29.32
+21 Nov 2022 17:52:58 CPU: 82.8 Memory: 76.17
+21 Nov 2022 17:57:58 CPU: 36.98 Memory: 28.69
+21 Nov 2022 18:02:58 CPU: 36.22 Memory: 26.19
+21 Nov 2022 18:07:58 CPU: 32.52 Memory: 25.88
+21 Nov 2022 18:12:58 CPU: 35.71 Memory: 21.58
+
+```
