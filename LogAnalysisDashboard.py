@@ -1,13 +1,9 @@
-import streamlit as st # web development
-import numpy as np # np mean, np random 
-import pandas as pd # read csv, df manipulation
-import time # to simulate a real time data, time loop 
-import plotly.express as px # interactive charts 
+import streamlit as st 
+import numpy as np
+import pandas as pd 
+import time 
+import plotly.express as px 
 
-
-# read csv from a github repo
-df = pd.read_csv("https://raw.githubusercontent.com/Lexie88rus/bank-marketing-analysis/master/bank.csv")
-df = pd.read_csv("cpulogs.txt",delimiter = ' ')
 
 st.set_page_config(
     page_title = 'Real-Time Log Analysis Dashboard',
@@ -21,14 +17,16 @@ st.title("Log Analysis Dashboard")
 
 # creating a single-element container.
 placeholder = st.empty()
-
+colnames = ['dd','mmm','yy','Timestamp','CPUp','CPU','MemP','Memory']
 # dataframe filter 
 
 while True: 
     # creating KPIs 
-    df = pd.read_csv("cpulogs.txt",delimiter = ' ')
-    avg_cpu = np.mean(df['cpu'])  
-    avg_mem = np.mean(df['memory'])
+    df = pd.read_csv("cpulogs.txt",delimiter=" ",names=colnames)
+    st.write(df.head())
+    
+    avg_cpu = np.mean((df['CPU']))  
+    avg_mem = np.mean(df['Memory'])
 
     with placeholder.container():
         # create three columns
@@ -36,7 +34,6 @@ while True:
 
         # fill in those three columns with respective metrics or KPIs 
         kpi1.metric(label="CPU ⏳", value=round(avg_cpu), delta= round(avg_cpu) - 10)
-        #kpi2.metric(label="Married Count 💍", value= int(count_married), delta= - 10 + count_married)
         kpi3.metric(label="Mem ＄", value= round(avg_mem),delta = round(avg_cpu) - 10)
 
         # create two columns for charts 
@@ -47,12 +44,12 @@ while True:
             st.dataframe(df)
         with fig_col2:
             st.markdown("### CPU Usage")
-            fig2 = px.line(df, x = 'timestamp',y="cpu")
+            fig2 = px.line(df, x = 'Timestamp',y="CPU")
             fig2.update_layout(yaxis_range=[0,100])
             st.write(fig2)
         with fig_col3:
             st.markdown("### Memory Usage")
-            fig3 = px.line(df, x = 'timestamp',y="memory")
+            fig3 = px.line(df, x = 'Timestamp',y="Memory")
             fig3.update_layout(yaxis_range=[0,100])
             st.write(fig3) 
         st.markdown("### Detailed Data View")

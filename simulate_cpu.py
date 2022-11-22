@@ -17,8 +17,8 @@ def generate_spike_data(lastEntry,current_time):
         cpu = lastEntry[0]
     if mem >= 10000 or mem <= 0:
         mem = lastEntry[1]
-    f.write(time.strftime("%d/%b/%Y:%H:%M:%S",
-             time.gmtime(current_time))+" "+str(cpu/100)+" "+str(mem/100)+"\n")
+    f.write(time.strftime("%d %b %Y %H:%M:%S",
+             time.gmtime(current_time))+" CPU: "+str(cpu/100)+" Memory: "+str(mem/100)+"\n")
     if is_peak:
         return lastEntry
     if cpu > 6000 or mem > 6000: #reset on increasing trend
@@ -29,8 +29,8 @@ def generate_const_data(lastEntry,current_time):
     f = open("cpulogs.txt", "a")
     cpu = random.randint(lastEntry[0]-200,lastEntry[0]+200) 
     mem = random.randint(lastEntry[1]-200, lastEntry[1]+200) 
-    f.write(time.strftime("%d/%b/%Y:%H:%M:%S",
-             time.gmtime(current_time))+" "+str(cpu/100)+" "+str(mem/100)+"\n")
+    f.write(time.strftime("%d %b %Y %H:%M:%S",
+             time.gmtime(current_time))+" CPU: "+str(cpu/100)+" Memory: "+str(mem/100)+"\n")
     if cpu > 5000 or mem > 5000: #reset on increasing trend
         return[3000,2500]
     if cpu < 2000 or mem < 2000:
@@ -53,13 +53,19 @@ def generate_grad_data(lastEntry,current_time):
         cpu = lastEntry[0]
     if mem >= 10000 or mem <= 0:
         mem = lastEntry[1]
-    f.write(time.strftime("%d/%b/%Y:%H:%M:%S",
-             time.gmtime(current_time))+" "+str(cpu/100)+" "+str(mem/100)+"\n")
+    f.write(time.strftime("%d %b %Y %H:%M:%S",
+             time.gmtime(current_time))+" CPU: "+str(cpu/100)+" Memory: "+str(mem/100)+"\n")
     return [cpu,mem]
 
-current_time = time.time()
-lastEntry = [3000,2500]
-for i in range (1000): 
-    lastEntry = generate_grad_data(lastEntry,current_time)
-    current_time += 1
-    time.sleep(0.1)
+def generate_graph(graph_type):
+    current_time = time.time()
+    lastEntry = [3000,2500]
+    while True:
+        if graph_type.value == 0: 
+            lastEntry = generate_const_data(lastEntry,current_time)
+        elif graph_type.value == 1:
+            lastEntry = generate_spike_data(lastEntry,current_time)
+        elif graph_type.value == 2:
+            lastEntry = generate_grad_data(lastEntry, current_time)
+        current_time += 1
+        time.sleep(0.1)
