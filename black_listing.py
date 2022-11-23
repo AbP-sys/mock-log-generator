@@ -42,22 +42,6 @@ def function1_authentication():
     data['status_code'] = pd.to_numeric(data['status_code'])
     data['timestamp'] = pd.to_datetime(data['timestamp'])
  
-    def send_mail(store):
-        olApp = win32.Dispatch('Outlook.Application')
-        olNS = olApp.GetNameSpace('MAPI')
-        mail_item = olApp.CreateItem(0)
-
-        mail_item.Subject = "Just Testing"
-        mail_item.BodyFormat = 1
-
-        mail_item.Body = "Block these ip addresses: \n{}".format(summary)
-        mail_item.Sender = "prachi.209301334@muj.manipal.edu"
-        mail_item.To = "sinhaprachi175@gmail.com"
-
-        mail_item.Display()
-        mail_item.Save()
-        mail_item.Send()
-
     myhash_time = {}
     myhash_count={}
     store=[]

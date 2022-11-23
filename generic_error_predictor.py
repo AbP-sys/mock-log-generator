@@ -8,22 +8,7 @@ import warnings
 warnings.filterwarnings("ignore")
 
 def function2_Error():
-    def send_mail(store):
-        olApp = win32.Dispatch('Outlook.Application')
-        olNS = olApp.GetNameSpace('MAPI')
-        mail_item = olApp.CreateItem(0)
-
-        mail_item.Subject = "Just Testing"
-        mail_item.BodyFormat = 1
-
-        mail_item.Body = "Prediction: \n{}".format(summary1)
-        mail_item.Sender = "prachi.209301334@muj.manipal.edu"
-        mail_item.To = "sinhaprachi175@gmail.com"
-
-        mail_item.Display()
-        mail_item.Save()
-        mail_item.Send()
-
+    
     f = open("log.txt",'r')
     LOG_LINE_REGEX = r'^(?P<IP>\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}).*\[(?P<timestamp>.*)\]\s"(?P<verb>[A-Z]+)\s(?P<path>[\w\/]+)\s+(?P<protocol>[\w\/\.]+)"\s(?P<status_code>\d+)\s(?P<response_size>\d+).*'
     pattern = re.compile(LOG_LINE_REGEX)

@@ -55,7 +55,7 @@ def render_dashboard(graph_type):
     window.rowconfigure(8,weight=1)
 
     #loginerror
-    loginerror_label=ttk.Label(window, text="Login Error")
+    loginerror_label=ttk.Label(window, text="Authentication failure")
     loginerror_label.grid(column=0,row=0,sticky=tk.W,padx=10,pady=10)
     attempt_label=ttk.Label(window, text="No of Attempts")
     attempt_label.grid(column=0,row=1,sticky=tk.W,padx=3,pady=3)
