@@ -3,7 +3,8 @@ import numpy as np
 import pandas as pd 
 import time 
 import plotly.express as px 
-
+import scaling_predictor
+import black_listing
 
 st.set_page_config(
     page_title = 'Real-Time Log Analysis Dashboard',
@@ -22,9 +23,15 @@ colnames = ['dd','mmm','yy','Timestamp','CPUp','CPU','MemP','Memory']
 
 while True: 
     # creating KPIs 
+    df1 = black_listing.finaldata()
     df = pd.read_csv("cpulogs.txt",delimiter=" ",names=colnames)
-    st.write(df.head())
-    
+    df['Timestamp'] = df['dd'].astype(str)+"-"+df['mmm']+"-"+df['yy'].astype(str)+" "+df['Timestamp'] 
+    df = df.drop(["dd","mmm","yy","CPUp","MemP"],axis = 1)
+    df = scaling_predictor.modify(df)
+    df = scaling_predictor.create_indicators(df)
+    time_grad = scaling_predictor.calculate(df)
+    scaling_predictor.plot_data(df,time_grad)
+
     avg_cpu = np.mean((df['CPU']))  
     avg_mem = np.mean(df['Memory'])
 
@@ -53,5 +60,7 @@ while True:
             fig3.update_layout(yaxis_range=[0,100])
             st.write(fig3) 
         st.markdown("### Detailed Data View")
+        fig = scaling_predictor.plot_data(df,time_grad)
+        st.pyplot(fig)
         
         time.sleep(1)

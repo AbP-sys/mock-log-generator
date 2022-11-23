@@ -6,7 +6,7 @@ def generate_spike_data(lastEntry,current_time):
     peak_chance = random.randint(0, 100)
     is_peak = False
 
-    if peak_chance < 5:  # 5% chance for generating a spike
+    if peak_chance < 2:  # 2% chance for generating a spike
         cpu = random.randint(lastEntry[0]+4000,lastEntry[0]+5000)
         mem = random.randint(lastEntry[1]+4000, lastEntry[1]+5000) 
         is_peak = True

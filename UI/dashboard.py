@@ -83,7 +83,7 @@ def render_dashboard(graph_type):
     login_button4.grid(column=1, row=2, padx=10, pady=10)
 
     #3rd prob
-    third_label=ttk.Label(window, text="ABC")
+    third_label=ttk.Label(window, text="Use Case #3")
     third_label.grid(column=0,row=4,sticky=tk.W,padx=10,pady=10)
     timeperiod_label2=ttk.Label(window, text="Time Period")
     timeperiod_label2.grid(column=0,row=5,sticky=tk.W,padx=5,pady=5)
@@ -93,7 +93,7 @@ def render_dashboard(graph_type):
     login_button5.grid(column=0, row=6, sticky=tk.E, padx=5, pady=5)
 
     #4th prob
-    fourth_label=ttk.Label(window, text="XYZ")
+    fourth_label=ttk.Label(window, text="Use Case #4")
     fourth_label.grid(column=1,row=4,sticky=tk.W,padx=10,pady=10)
     timeperiod_label3=ttk.Label(window, text="Time Period")
     timeperiod_label3.grid(column=1,row=5,sticky=tk.W,padx=5,pady=5)
