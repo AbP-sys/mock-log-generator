@@ -5,6 +5,7 @@ import time
 import plotly.express as px 
 import scaling_predictor
 import black_listing
+import generic_error_predictor
 
 st.set_page_config(
     page_title = 'Real-Time Log Analysis Dashboard',
@@ -62,5 +63,12 @@ while True:
         st.markdown("### Detailed Data View")
         fig = scaling_predictor.plot_data(df,time_grad)
         st.pyplot(fig)
-        
+
+        col1, col2 = st.columns(2)
+        with col1:
+            black_list = black_listing.function1_authentication()
+            st.dataframe(black_list)
+        with col2:
+            error_p = generic_error_predictor.function2_Error()
+            st.dataframe(error_p)
         time.sleep(1)
