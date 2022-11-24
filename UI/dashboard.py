@@ -9,6 +9,10 @@ import simulate_cpu
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = OUTPUT_PATH / Path("./assets")
 
+# spiky= PhotoImage(file = r"C:\Users\Owner\Desktop\DellH2H\UI\assets\spiky.png")
+#constant = PhotoImage(file = r"C:\Users\Owner\Desktop\DellH2H\UI\assets\constant.png")
+#gradual= PhotoImage(file = r"C:\Users\Owner\Desktop\DellH2H\UI\assets\gradual.png") 
+
 def relative_to_assets(path: str) -> Path:
     return ASSETS_PATH / Path(path)
 
@@ -57,17 +61,22 @@ def render_dashboard(graph_type):
     #loginerror
     loginerror_label=ttk.Label(window, text="Authentication failure")
     loginerror_label.grid(column=0,row=0,sticky=tk.W,padx=10,pady=10)
+    ip_label=ttk.Label(window, text="IP Address")
+    ip_label.grid(column=0,row=1,sticky=tk.W,padx=3,pady=3)
+    ip_entry=ttk.Entry(window)
+    ip_entry.grid(column=0,row=1,sticky=tk.E,padx=3,pady=3)
+
     attempt_label=ttk.Label(window, text="No of Attempts")
-    attempt_label.grid(column=0,row=1,sticky=tk.W,padx=3,pady=3)
+    attempt_label.grid(column=0,row=2,sticky=tk.W,padx=3,pady=3)
     attempt_entry=ttk.Entry(window)
-    attempt_entry.grid(column=0,row=1,sticky=tk.E,padx=3,pady=3)
+    attempt_entry.grid(column=0,row=2,sticky=tk.E,padx=3,pady=3)
 
     timeperiod_label=ttk.Label(window, text="Time Period")
-    timeperiod_label.grid(column=0,row=2,sticky=tk.W,padx=5,pady=5)
+    timeperiod_label.grid(column=0,row=3,sticky=tk.W,padx=5,pady=5)
     timeperiod_entry=ttk.Entry(window)
-    timeperiod_entry.grid(column=0,row=2,sticky=tk.E,padx=5,pady=5)
-    login_button1 = ttk.Button(window, text="Submit",command=lambda: simulate_webserver.repeated_login(int(attempt_entry.get()),int(timeperiod_entry.get()),True))
-    login_button1.grid(column=0, row=3, padx=5, pady=5)
+    timeperiod_entry.grid(column=0,row=3,sticky=tk.E,padx=5,pady=5)
+    login_button1 = ttk.Button(window, text="Submit",command=lambda: simulate_webserver.repeated_login(int(attempt_entry.get()),int(timeperiod_entry.get()),True,ip_entry.get()))
+    login_button1.grid(column=0, row=4, padx=5, pady=5)
 
     #Cpu overload
     Cpuoverload_label=ttk.Label(window, text="CPU overload")
@@ -83,24 +92,24 @@ def render_dashboard(graph_type):
     login_button4.grid(column=1, row=2, padx=10, pady=10)
 
     #3rd prob
-    third_label=ttk.Label(window, text="Use Case #3")
-    third_label.grid(column=0,row=4,sticky=tk.W,padx=10,pady=10)
+    third_label=ttk.Label(window, text="Use Case 3")
+    third_label.grid(column=0,row=5,sticky=tk.W,padx=10,pady=10)
     timeperiod_label2=ttk.Label(window, text="Time Period")
-    timeperiod_label2.grid(column=0,row=5,sticky=tk.W,padx=5,pady=5)
+    timeperiod_label2.grid(column=0,row=6,sticky=tk.W,padx=5,pady=5)
     timeperiod_entry2=ttk.Entry(window)
-    timeperiod_entry2.grid(column=0,row=5,sticky=tk.E,padx=5,pady=5)
+    timeperiod_entry2.grid(column=0,row=6,sticky=tk.E,padx=5,pady=5)
     login_button5 = ttk.Button(window, text="Submit")
-    login_button5.grid(column=0, row=6, sticky=tk.E, padx=5, pady=5)
+    login_button5.grid(column=0, row=7, sticky=tk.E, padx=5, pady=5)
 
     #4th prob
-    fourth_label=ttk.Label(window, text="Use Case #4")
-    fourth_label.grid(column=1,row=4,sticky=tk.W,padx=10,pady=10)
+    fourth_label=ttk.Label(window, text="Use Case 4")
+    fourth_label.grid(column=1,row=5,sticky=tk.W,padx=10,pady=10)
     timeperiod_label3=ttk.Label(window, text="Time Period")
-    timeperiod_label3.grid(column=1,row=5,sticky=tk.W,padx=5,pady=5)
+    timeperiod_label3.grid(column=1,row=6,sticky=tk.W,padx=5,pady=5)
     timeperiod_entry3=ttk.Entry(window)
-    timeperiod_entry3.grid(column=1,row=5,sticky=tk.E,padx=5,pady=5)
+    timeperiod_entry3.grid(column=1,row=6,sticky=tk.E,padx=5,pady=5)
     login_button6 = ttk.Button(window, text="Submit")
-    login_button6.grid(column=1, row=6, sticky=tk.E, padx=5, pady=5)
+    login_button6.grid(column=1, row=7, sticky=tk.E, padx=5, pady=5)
 
 
 
